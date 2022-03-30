@@ -15,17 +15,27 @@
         <thead class="table mb-0"> 
           <tr>
               <th>No</th>
-              <th>NIS</th>
+              <th>NPM</th>
               <th>Nama</th>
+              <th>jurusan</th>
+              <th>prodi</th>
               <th>Kelas</th>
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let siswa of GETSiswa; let i=index;">
               <td>{{i+1}}</td>
-              <td>{{siswa.nis}}</td>
+              <td>{{siswa.npm}}</td>
               <td>{{siswa.nama}}</td>
+              <td>{{siswa.jurusan}}</td>
+              <td>{{siswa.prodi}}</td>
               <td>{{siswa.kelas}}</td>
+              <td>
+                <ion-button type="submit" routerLink="/updatedata/{{siswa.npm}}"
+                expand="block" shape="round" color="primary">Edit</ion-button>
+                <ion-button type="submit" shape="round" expand="block" color="danger"
+                (click)="deleteData(siswa.npm)">Delete</ion-button>
+              </td>
             </tr>
         </tbody>
       </table>

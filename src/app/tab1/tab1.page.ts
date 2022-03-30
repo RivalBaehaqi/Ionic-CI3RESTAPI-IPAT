@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 export class Tab1Page {
 
   public GETSiswa: any;
+  public deleteSiswa: any;
   constructor(
     private http: HttpClient
   ) { }
@@ -24,10 +25,24 @@ export class Tab1Page {
   
   _Getdata() {
     let data: Observable<any>;
-    data = this.http.get('http://localhost/codeigniter/apiserver/index.php/api/getdata');
+    data = this.http.get('http://localhost/CodeIgniter_API/index.php/api/GetData');
     data.subscribe(result => {
       this.GETSiswa = result;
       console.log(result);
+    });
+  }
+
+  public deleteData(npm) {
+    let data: Observable<any>;
+    data = this.http.get
+    ('http://localhost/CodeIgniter_API/index.php/api/deletedata/' + npm);
+    data.subscribe(result => {
+      this.deleteSiswa = result;
+      console.log(result.status);
+      if (result.status === 'ok') {
+        alert('Delete Data Successfully!');
+        this.ionViewWillEnter();
+      }
     });
   }
 
